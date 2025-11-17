@@ -1,98 +1,73 @@
+# React + TypeScript + Vite
+
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+
+Currently, two official plugins are available:
+
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+## React Compiler
+
+The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+
+## Expanding the ESLint configuration
+
+If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+
+```js
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
+
+      // Remove tseslint.configs.recommended and replace with this
+      tseslint.configs.recommendedTypeChecked,
+      // Alternatively, use this for stricter rules
+      tseslint.configs.strictTypeChecked,
+      // Optionally, add this for stylistic rules
+      tseslint.configs.stylisticTypeChecked,
+
+      // Other configs...
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
 ```
-██╗  ██╗ █████╗ ██╗     ██╗███╗   ██╗ ██████╗  █████╗ ██╗
-██║ ██╔╝██╔══██╗██║     ██║████╗  ██║██╔════╝ ██╔══██╗██║
-█████╔╝ ███████║██║     ██║██╔██╗ ██║██║  ███╗███████║██║
-██╔═██╗ ██╔══██║██║     ██║██║╚██╗██║██║   ██║██╔══██║██║
-██║  ██╗██║  ██║███████╗██║██║ ╚████║╚██████╔╝██║  ██║███████╗
-╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝╚═╝╚═╝  ╚═══╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝
 
-✨ KalingaAI — The Futuristic Chat Intelligence by Yashwant ✨
+You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+
+```js
+// eslint.config.js
+import reactX from 'eslint-plugin-react-x'
+import reactDom from 'eslint-plugin-react-dom'
+
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
+      // Enable lint rules for React
+      reactX.configs['recommended-typescript'],
+      // Enable lint rules for React DOM
+      reactDom.configs.recommended,
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
 ```
-# ⚡ KalingaAI Chat – Futuristic AI Assistant 🤖
-
-> A production-ready, cyberpunk-inspired AI chatbot built by **Yashwant (BCA-AIML, Kalinga University, Raipur)**.  
-> It blends advanced AI (TinyLLaMA via Ollama) with a neon-lit, Nike-grade user interface designed for speed, immersion, and intelligence.
-
----
-
-## 🧠 Overview
-
-**KalingaAI** is a next-generation chatbot system designed for **Kalinga University**, combining cutting-edge AI features with an immersive, futuristic design philosophy.  
-The system mimics the intelligence and responsiveness of ChatGPT — entirely powered **locally** via Ollama and Flask.
-
-It is optimized for:
-- ⚡ Real-time AI interaction  
-- 🧩 Persistent and structured chat experience  
-- 🌌 Cyberpunk-themed, glowing UI/UX that feels alive  
-
----
-
-## 🏗️ Architecture
-
-### 🔧 Backend – Flask + Ollama + TinyLLaMA
-- Fast, scalable Flask server for chat routing  
-- Integrates with **Ollama (TinyLLaMA)** at `http://localhost:11434/api/generate`  
-- Handles prompt-response flow with:
-  - API error tolerance  
-  - Timeout recovery  
-  - CORS for frontend communication  
-  - Logging & debugging support  
-  - Persistent chat storage (file or SQLite)
-
-### 💻 Frontend – React + TypeScript + Tailwind + Vite
-- Modern **SPA** (Single Page App) for real-time AI chat  
-- Animated chat interface inspired by **Nike** & **Cyberpunk 2077**  
-- Dark mode / Light mode with smooth transitions  
-- Markdown rendering (bold, italic, lists, code blocks)  
-- “Thinking…” typing indicators  
-- Auto-scroll & sound-enhanced message flow  
-
----
-
-## 🎨 Design Philosophy
-
-A perfect fusion of **AI intelligence** + **cyberpunk art direction**, focused on feeling *alive* while staying *minimal*.
-
-### ✴️ Visual Highlights:
-- **Glowing neon edges** with glassmorphism  
-- **Orbitron / Exo / Rajdhani fonts** for futuristic typography  
-- **Electric blue + magenta gradients**  
-- **Chat bubble animations** and **holographic panels**  
-- **Sound FX** for message send/receive (whoosh + ping)  
-- **Nike UI inspiration** – clean, high-contrast, animated  
-
----
-
-## ✨ Core Functional Features
-
-| Feature | Description |
-|----------|-------------|
-| 💬 Chat Interface | Real-time conversation with AI |
-| 🧾 Markdown Support | Bold, italics, bullet points, and code formatting |
-| 🔄 Auto Scroll | Automatically scrolls to the latest message |
-| 🔊 Sound Effects | Send = whoosh • Receive = ping |
-| 🕒 Persistent History | Saves past conversations locally |
-| 💡 Theme Toggle | Cyberpunk Dark / Light mode with animation |
-| ⚠️ Error Handling | Graceful messages for network or AI unavailability |
-| 🧠 AI Integration | Uses Ollama + TinyLLaMA for local inference |
-
----
-
-## 🧩 Folder Structure
-
-```bash
-/kalingaai
-├── client/                # Frontend (React + Vite + Tailwind)
-│   ├── public/
-│   │   └── sounds/        # send.mp3 + receive.mp3
-│   └── src/
-│       ├── App.tsx        # Main chat UI
-│       ├── main.tsx       # Entry point
-│       ├── index.css      # Global styles
-│       └── components/    # Future modular UI parts
-│
-├── server/                # Backend (Flask)
-│   ├── index.ts           # Express/Flask integration
-│   └── routes.ts          # Chat API routes
-│
-└── README.md              # Project documentation
