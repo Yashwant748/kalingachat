@@ -1,0 +1,94 @@
+/* Main welcome layout */
+.welcome-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  height: calc(100vh - 120px);
+  overflow-y: auto;
+}
+
+.welcome-inner {
+  text-align: center;
+  max-width: 850px;
+  width: 100%;
+}
+
+/* Brain Icon */
+.brain-icon {
+  width: 90px;
+  height: 90px;
+  margin: 0 auto 20px;
+  background: radial-gradient(circle, rgba(0,255,255,0.15), rgba(0,0,0,0));
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.brain-svg {
+  width: 48px;
+  height: 48px;
+  color: #4be8ff;
+  filter: drop-shadow(0 0 10px #4be8ff);
+}
+
+/* Title */
+.welcome-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 10px;
+  filter: drop-shadow(0 0 6px rgba(75, 232, 255, 0.4));
+}
+
+/* Subtitle */
+.welcome-sub {
+  color: #bfc8d6;
+  max-width: 650px;
+  margin: 0 auto 40px;
+  font-size: 1rem;
+}
+
+/* Cards grid */
+.card-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+/* Individual card */
+.feature-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  padding: 20px;
+  border-radius: 14px;
+  text-align: left;
+  transition: 0.2s;
+}
+
+.feature-card:hover {
+  background: rgba(255,255,255,0.1);
+  transform: translateY(-3px);
+}
+
+/* Card text */
+.card-title {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: white;
+}
+
+.card-desc {
+  font-size: 0.85rem;
+  margin-top: 4px;
+  color: #bfc8d6;
+}
+
+/* Tip text */
+.tip-text {
+  margin-top: 35px;
+  font-size: 0.85rem;
+  color: #4be8ff;
+}
